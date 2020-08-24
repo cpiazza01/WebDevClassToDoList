@@ -43,6 +43,9 @@ const listSchema = {
 
 const List = mongoose.model("List", listSchema);
 
+const dateObj = new Date();
+const date = dateObj.getFullYear();
+
 app.get("/", function(req, res) {
 
   Item.find(function(err, items) {
@@ -59,7 +62,7 @@ app.get("/", function(req, res) {
           }
         });
       } else {
-        res.render("list", {listTitle: "Today", newListItems: items});
+        res.render("list", {listTitle: "Today", newListItems: items, date: date});
       }
     }
   });
